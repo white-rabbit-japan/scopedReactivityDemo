@@ -13,8 +13,8 @@ Template.Restaurants.helpers({
 
 Template.menuItems.helpers({
   restaurantName: function() {
-    var restaurantMenu = Restaurants.find(this.restaurant).fetch();
-    return restaurantMenu[0].name;
+    var restaurantMenu = Restaurants.findOne(this.restaurant);
+    return restaurantMenu.name;
 
   },
 })
