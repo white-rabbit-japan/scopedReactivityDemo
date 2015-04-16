@@ -1,0 +1,26 @@
+<head>
+  <title>Test</title>
+</head>
+
+<body>
+{{> Restaurants}}
+</body>
+
+<template name="Restaurants">
+  <ul>
+    {{#each Restaurant}}
+    <li>
+      {{name}}
+      {{#if currentRestaurant}}
+      {{> menuItems restaurant=_id}}
+      {{/if}}
+    </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="menuItems">
+  <ul>
+    <li class="menu">I'm a menu for {{restaurantName}}!</li>
+  </ul>
+</template>
