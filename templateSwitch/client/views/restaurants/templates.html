@@ -7,21 +7,32 @@
 </body>
 
 <template name="Restaurants">
+  <button type="button" class="__reinit">reinit data</button>
   <ul>
-    {{#each Restaurant}}
-    <li>
-      {{name}}
-      {{#if currentRestaurant}}
-      {{> menuItems restaurant=_id}}
-      {{/if}}
-    </li>
+      {{#each Restaurant}}
+        <li>
+            {{name}} (extra fields: phone={{phone}}, status={{status}})
+            {{#if currentRestaurant}}
+                {{> menuItems restaurant=_id}}
+            {{/if}}
+        </li>
+      {{/each}}
+    <hr>
+    <h4>collection dump</h4>
+    <ul>{{#each dataDump}}
+      <li>{{stringify data=this}}</li>
     {{/each}}
+    </ul>
   </ul>
+
   <br><a href="https://github.com/white-rabbit-japan/scopedReactivityDemo">view my source code</a>
 </template>
 
 <template name="menuItems">
   <ul>
-    <li class="menu">I'm a menu for {{restaurantName}}!</li>
+    <li class="menu">{{selectedName}}</li>
+    <li class="menu">{{selectedPhone}}</li>
+    <li class="menu">{{selectedStatus}}</li>
+
   </ul>
 </template>

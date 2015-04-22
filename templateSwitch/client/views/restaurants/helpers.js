@@ -9,14 +9,33 @@ Template.Restaurants.helpers({
     return Template.instance().state.equals("currentRestaurant", this._id);
   },
 
+  dataDump: function() {
+    //var data = Restaurants.find({}).fetch());
+    //var arrayLength = data.length;
+    //for (var i = 0; i < arrayLength; i++) {
+    return Restaurants.find({}).fetch();
+
+    //Do something
+  },
+
+  stringify: function() {
+    return JSON.stringify(this);
+  },
 });
 
 Template.menuItems.helpers({
-  restaurantName: function() {
-    var restaurantMenu = Restaurants.findOne(this.restaurant);
-    return restaurantMenu.name;
-
+  selectedName: function() {
+    return Template.parentData(1).name;
   },
+
+  selectedStatus: function() {
+    return Template.parentData(1).status;
+  },
+
+  selectedPhone: function() {
+    return Template.parentData(1).phone;
+  },
+
 })
 
 
